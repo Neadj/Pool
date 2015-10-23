@@ -11,7 +11,7 @@ public class ResourcefulUser<R extends Resource> {
 		this.resource = resource;
 	}
 
-	public void reseResource() {
+	public void resetResource() {
 		this.resource = null;
 	}
 }

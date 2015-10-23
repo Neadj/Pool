@@ -1,10 +1,10 @@
 package resources;
 
-public class Basket implements Resource {
+public class Cubicle implements Resource {
 
     @Override
     public String description() {
-        return "This is a basket.";
+        return "This is a cubicle.";
     }
 
 }

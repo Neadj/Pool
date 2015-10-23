@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;;
 
 public abstract class ResourcePool<T extends Resource> {
-	protected List<T> availableResources = new ArrayList<T>();
-	protected List<T> givenResources = new ArrayList<T>();
+	protected List<T> availableResources = new ArrayList<>();
+	protected List<T> givenResources = new ArrayList<>();
 
 	public abstract T createResource();
 
