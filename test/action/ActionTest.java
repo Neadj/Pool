@@ -6,7 +6,7 @@ import org.junit.*;
 
 public abstract class ActionTest {
 	abstract public Action createAction();
-	abstract public Action createFinishedAction();
+	abstract public Action createFinishedAction() throws ActionFinishedException;
 	
 	@Test
 	public void onlyOneValidStateEachMoment() throws ActionFinishedException{
@@ -28,7 +28,11 @@ public abstract class ActionTest {
 	
 	@Test(expected=ActionFinishedException.class)
 	public void doStepTest() throws ActionFinishedException{
-		createFinishedAction().doStep();
+		Action finishedAction = createFinishedAction();
+		assertTrue(finishedAction.isFinished());
+		finishedAction.doStep();
 	}
 	
 }
+
+
