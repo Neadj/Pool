@@ -36,10 +36,7 @@ public abstract class Scheduler extends Action{
 	 * @return true if and only if each actions of the Scheduler is ready else False.
 	 */
 	public boolean isReady() {
-		boolean tmp = true;
-		for(Action a : this.actions)
-			tmp = tmp && a.isReady();
-		return this.isReady && tmp && !this.actions.isEmpty();
+		return this.isReady;
 	}
 	
 	
@@ -82,7 +79,7 @@ public abstract class Scheduler extends Action{
 		if (this.isFinished()){
 			throw new IllegalArgumentException("Can't add a action to a finished scheduler");		
 		}
-		if (action.isReady()&& action.isFinished())
+		if (action.isReady()&& !action.isFinished())
 			this.actions.add(action);
 		else throw new IllegalArgumentException("Can't add an unready or finished action");		
 	}

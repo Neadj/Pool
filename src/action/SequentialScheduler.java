@@ -3,6 +3,7 @@ package action;
 public class SequentialScheduler extends Scheduler{
 
 	public void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException {
+		this.isReady = false;
 		if (this.actions.isEmpty()){
 			throw new ActionNotInitializedException();
 		}

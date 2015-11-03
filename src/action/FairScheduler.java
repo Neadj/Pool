@@ -10,36 +10,33 @@ public class FairScheduler extends Scheduler{
 	protected Iterator<Action> it;
 	
 	/** The current action. */
-	protected Action currentAction;
+	protected Action nextAction;
 	
-	
-	/**
-	 * Instantiates a new fair scheduler.
-	 */
-	public FairScheduler(){
-		it = actions.iterator();
-		currentAction=it.next();
+
+	public FairScheduler() {
+		super();
 	}
-	
-	/**
-	 * Instantiates a new fair scheduler.
-	 *
-	 * @param actions the actions
-	 */
-	public FairScheduler(List<Action> actions){
-		this.actions=actions;
+
+	public FairScheduler(Action action) {
+		super(action);
 		it = actions.iterator();
-		currentAction=it.next();
+		nextAction=it.next();
 	}
-	
+
+	public FairScheduler(List<Action> actions) {
+		super(actions);
+		it = actions.iterator();
+		nextAction=it.next();
+	}
 
 	@Override
 	public void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException {
+		this.isReady = false;
 		if (this.actions.isEmpty()){
 			throw new ActionNotInitializedException();
 		}
-		this.currentAction.reallyDoStep();
-		if (this.currentAction.isFinished()){
+		this.nextAction.doStep();
+		if (this.nextAction.isFinished()){
 			this.it.remove();
 		}
 		advancesNextAction();
@@ -50,17 +47,19 @@ public class FairScheduler extends Scheduler{
 	 */
 	protected void advancesNextAction() {	
 		if(it.hasNext()) {
-			currentAction=it.next();
+			nextAction=it.next();
 		}else {
 			it = actions.iterator();
-			currentAction=it.next();
+			if (actions.isEmpty())
+				nextAction = null;
+			else nextAction=it.next();
 		}
 	}
 	
 	public void addAction(Action a) {
 		super.addAction(a);
-		this.it=actions.iterator();
-		while(this.it.hasNext() && !this.it.next().equals(this.currentAction));
+		if (it == null)
+			this.it=actions.iterator();
 	}
 	
 
@@ -70,7 +69,7 @@ public class FairScheduler extends Scheduler{
 	 * @return the current action
 	 */
 	public Action getCurrentAction() {
-		return currentAction;
+		return nextAction;
 	}
 
 }
