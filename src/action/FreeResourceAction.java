@@ -1,32 +1,42 @@
 package action;
 
-import resources.ResourcePool;
-import resources.ResourcefulUser;
+import resources.*;
 
-public class FreeResourceAction extends Action {
+/**
+* The Class FreeResourceAction.
+*
+* @param <R> the generic resource type
+*/
+public class FreeResourceAction<R extends Resource> extends ResourcePoolAction<R> {
 
-    ResourcePool pool;
-    ResourcefulUser user;
+	/**
+	 * Instantiates a new free resource action.
+	 *
+	 * @param pool the pool
+	 * @param user the user
+	 */
+	public FreeResourceAction(ResourcePool<R> pool, ResourcefulUser<R> user) {
+		super(pool, user);
+		
+	}
 
-    public FreeResourceAction(ResourcePool pool, ResourcefulUser user) {
-        this.pool = pool;
-        this.user = user;
-    }
-    
-    @Override
-    public boolean isReady() {
-        return user.getResource() != null;
-    }
+	/**
+	 * Really do a step.
+	 * Thats mean free a resource and displayed a sentence which reported it.
+	 * Then, the resource is finished.
+	 */
+	@Override
+	protected void reallyDoStep() {
+		
+		R res = user.getResource();
+		
+		if(res != null) {
+			this.pool.freeResource(res);
+			this.user.resetResource();
+			this.isReady=false;
+			this.isFinished=true;
+		}
+	
+	}
 
-    @Override
-    public boolean isFinished() {
-        return user.getResource() == null;
-    }
-
-    @Override
-    protected void reallyDoStep() {
-        pool.freeResource(user.getResource());
-        user.resetResource();
-    }
-    
 }

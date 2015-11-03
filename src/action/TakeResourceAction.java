@@ -1,31 +1,38 @@
 package action;
 
-import resources.ResourcePool;
-import resources.ResourcefulUser;
+import resources.*;
+import java.util.NoSuchElementException;
 
-public class TakeResourceAction extends Action {
-    
-    ResourcePool pool;
-    ResourcefulUser user;
-    
-    public TakeResourceAction(ResourcePool pool, ResourcefulUser user) {
-        this.pool = pool;
-        this.user = user;
-    }
+/**
+ * The Class TakeResourceAction.
+ *
+ * @param <R> the generic type
+ */
+public class TakeResourceAction<R extends Resource> extends ResourcePoolAction<R> {
 
-    @Override
-    public boolean isReady() {
-        return user.getResource() == null;
-    }
+	/**
+	 * Instantiates a new take resource action.
+	 *
+	 * @param pool the pool
+	 * @param user the user
+	 */
+	public TakeResourceAction(ResourcePool<R> pool, ResourcefulUser<R> user) {
+		super(pool, user);
+	}
 
-    @Override
-    public boolean isFinished() {
-        return user.getResource() != null;
-    }
-
-    @Override
-    protected void reallyDoStep() {
-        user.setResource(pool.provideResource());
-    }
-
+	@Override
+	protected void reallyDoStep() {
+		
+		if(user.getResource() == null){
+			try{
+				R res = this.pool.provideResource();
+			this.user.setResource(res);
+			System.out.println("success");
+			this.isReady=false;
+			this.isFinished=true;
+			}catch (NoSuchElementException e){
+				System.out.println("failed");} 
+		}
+		
+	}
 }
