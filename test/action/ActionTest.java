@@ -6,10 +6,10 @@ import org.junit.*;
 
 public abstract class ActionTest {
 	abstract public Action createAction();
-	abstract public Action createFinishedAction() throws ActionFinishedException;
+	abstract public Action createFinishedAction() throws ActionFinishedException, ActionNotInitializedException;
 	
 	@Test
-	public void onlyOneValidStateEachMoment() throws ActionFinishedException{
+	public void onlyOneValidStateEachMoment() throws ActionFinishedException, ActionNotInitializedException{
 		Action a=this.createAction();
 		assertTrue(a.isReady());
 		assertFalse(a.isInProgress());
@@ -27,7 +27,7 @@ public abstract class ActionTest {
 	}
 	
 	@Test(expected=ActionFinishedException.class)
-	public void doStepTest() throws ActionFinishedException{
+	public void doStepTest() throws ActionFinishedException, ActionNotInitializedException{
 		Action finishedAction = createFinishedAction();
 		assertTrue(finishedAction.isFinished());
 		finishedAction.doStep();

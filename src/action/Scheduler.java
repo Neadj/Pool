@@ -14,6 +14,23 @@ public abstract class Scheduler extends Action{
 	protected boolean isReady =true;
 
 	
+	public Scheduler() {
+		
+	}
+	
+	public Scheduler(Action action) {
+		this.addAction(action);
+	}
+	
+	/**
+	 * Instantiates a new scheduler.
+	 *
+	 * @param actions the actions
+	 */
+	public Scheduler(List<Action> actions){
+		this.actions=actions;
+	}
+	
 	/**
 	 * Says if a Scheduler is ready or not.
 	 * @return true if and only if each actions of the Scheduler is ready else False.
@@ -44,17 +61,6 @@ public abstract class Scheduler extends Action{
 		this.actions.remove(action);
 	}
 	
-	/**
-	 * remove from the list the scheduler that are finished
-	 */
-	public void update() {
-		for (int i = 0; i < this.actions.size(); i++) {
-			if (this.actions.get(i).isFinished()) {
-				this.removeAction(actions.get(i));
-			}
-		}
-	}
-
 	
 	/**
 	 * Indicates if there is still an action in the scheduler
@@ -63,8 +69,7 @@ public abstract class Scheduler extends Action{
 	 *         scheduler
 	 */
 	public boolean isFinished() {
-		return !isReady()&& this.actions.isEmpty();
-		
+		return !isReady()&& this.actions.isEmpty();	
 	}
 	
 	
@@ -91,6 +96,7 @@ public abstract class Scheduler extends Action{
 	public List<Action> getListAction() {
 		return this.actions;
 	}
+	
 	
 	/**
 	 * Make a sentence where is displayed each action of the Scheduler.

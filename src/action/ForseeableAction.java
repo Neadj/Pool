@@ -32,7 +32,6 @@ public class ForseeableAction extends Action {
     @Override
     protected void reallyDoStep() {
         this.remainingTime--;
-
     }
 
 }

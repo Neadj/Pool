@@ -37,8 +37,9 @@ public abstract class Action
 	 * Checks if the action is finished, then do a step.
 	 *
 	 * @throws ActionFinishedException if the action is already finished
+	 * @throws ActionNotInitializedException 
 	 */
-	public void doStep() throws ActionFinishedException
+	public void doStep() throws ActionFinishedException, ActionNotInitializedException
 	{
 		if(this.isFinished())
 		{
@@ -52,7 +53,9 @@ public abstract class Action
 
 	/**
 	 * Really do the step.
+	 * @throws ActionFinishedException 
+	 * @throws ActionNotInitializedException 
 	 */
-	protected abstract void reallyDoStep();
+	protected abstract void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException;
 	
 }

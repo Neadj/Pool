@@ -25,7 +25,7 @@ public class ForseeableActionTest extends ActionTest {
 	}
 	
 	@Test
-	public void onlyOneValidStateEachMomentForseeableableActionTest() throws ActionFinishedException{		
+	public void onlyOneValidStateEachMomentForseeableableActionTest() throws ActionFinishedException, ActionNotInitializedException{		
 		this.onlyOneValidStateEachMoment();
 	}
 	
@@ -38,7 +38,7 @@ public class ForseeableActionTest extends ActionTest {
 	}
 
 	@Override
-	public Action createFinishedAction() throws ActionFinishedException {
+	public Action createFinishedAction() throws ActionFinishedException, ActionNotInitializedException {
 		for (int i = 0; i < 10; i++) {
 			atest.doStep();
 		}
