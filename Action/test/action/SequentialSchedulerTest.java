@@ -1,7 +1,12 @@
 package action;
 
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import resources.BasketPool;
+import resources.CubiclePool;
 
 public class SequentialSchedulerTest extends ActionTest{
 	protected SequentialScheduler seqScheduler;
@@ -25,7 +30,9 @@ public class SequentialSchedulerTest extends ActionTest{
 	}
 	
 	@Test
-	public void reallyDoStepTest(){
-		
+	public void reallyDoStepTest() throws ActionFinishedException, ActionNotInitializedException{
+		seqScheduler.addAction(new Swimmer(Integer.toString(1), new BasketPool(1), new CubiclePool(1), 1, 1, 1));
+		seqScheduler.reallyDoStep();
+		assertTrue(seqScheduler.getListAction().isEmpty());
 	}
-}
+} 
