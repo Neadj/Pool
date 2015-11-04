@@ -9,7 +9,7 @@ import java.util.*;
 public abstract class Scheduler extends Action{
 	
 	/** a list of action. */
-	protected List<Action> actions=new ArrayList<Action>();;
+	protected List<Action> actions=new ArrayList<Action>();
 	
 	protected boolean isReady =true;
 
@@ -79,7 +79,7 @@ public abstract class Scheduler extends Action{
 		if (this.isFinished()){
 			throw new IllegalArgumentException("Can't add a action to a finished scheduler");		
 		}
-		if (action.isReady()&& !action.isFinished())
+		if (action.isReady() && !action.isFinished())
 			this.actions.add(action);
 		else throw new IllegalArgumentException("Can't add an unready or finished action");		
 	}
