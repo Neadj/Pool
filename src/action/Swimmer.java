@@ -14,15 +14,17 @@ public class Swimmer extends SequentialScheduler{
 
     public Swimmer(String name, BasketPool baskets, CubiclePool cubicles, int undressDuration, int swimmingDuration, int dressDuration) {
         this.name = name;
-        actions.add(new TakeResourceAction(baskets, basketUser));
-        actions.add(new TakeResourceAction(cubicles, cubicleUser));
+        basketUser = new ResourcefulUser<Basket>();
+		cubicleUser = new ResourcefulUser<Cubicle>();
+        actions.add(new TakeResourceAction<Basket>(baskets, basketUser));
+        actions.add(new TakeResourceAction<Cubicle>(cubicles, cubicleUser));
         actions.add(new ForseeableAction(undressDuration));
-        actions.add(new FreeResourceAction(cubicles, cubicleUser));
+        actions.add(new FreeResourceAction<Cubicle>(cubicles, cubicleUser));
         actions.add(new ForseeableAction(swimmingDuration));
-        actions.add(new TakeResourceAction(cubicles, cubicleUser));
+        actions.add(new TakeResourceAction<Cubicle>(cubicles, cubicleUser));
         actions.add(new ForseeableAction(dressDuration));
-        actions.add(new FreeResourceAction(cubicles, cubicleUser));
-        actions.add(new FreeResourceAction(baskets, basketUser));
+        actions.add(new FreeResourceAction<Cubicle>(cubicles, cubicleUser));
+        actions.add(new FreeResourceAction<Basket>(baskets, basketUser));
     }
     @Override
     public void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException {
