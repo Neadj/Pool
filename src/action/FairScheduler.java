@@ -1,17 +1,9 @@
 package action;
 
-import java.util.*;
-
+import java.util.List;
 
 public class FairScheduler extends Scheduler{
 
-
-	/** The iterator. */
-	protected Iterator<Action> it;
-	
-	/** The current action. */
-	protected Action nextAction;
-	
 
 	public FairScheduler() {
 		super();
@@ -19,15 +11,19 @@ public class FairScheduler extends Scheduler{
 
 	public FairScheduler(Action action) {
 		super(action);
-		it = actions.iterator();
-		nextAction=it.next();
+		this.nextAction=action;
 	}
 
 	public FairScheduler(List<Action> actions) {
 		super(actions);
-		it = actions.iterator();
-		nextAction=it.next();
+		this.nextAction=actions.get(0);
 	}
+
+	/** The iterator. */
+	protected int it =0;
+	
+	/** The current action. */
+	protected Action nextAction;
 
 	@Override
 	public void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException {
@@ -35,9 +31,10 @@ public class FairScheduler extends Scheduler{
 		if (this.actions.isEmpty()){
 			throw new ActionNotInitializedException();
 		}
+		this.nextAction.toString();
 		this.nextAction.doStep();
 		if (this.nextAction.isFinished()){
-			this.it.remove();
+			this.actions.remove(nextAction);
 		}
 		advancesNextAction();
 	}
@@ -45,31 +42,33 @@ public class FairScheduler extends Scheduler{
 	/**
 	 * move cursor on the next action
 	 */
-	protected void advancesNextAction() {	
-		if(it.hasNext()) {
-			nextAction=it.next();
-		}else {
-			it = actions.iterator();
-			if (actions.isEmpty())
-				nextAction = null;
-			else nextAction=it.next();
+	protected void advancesNextAction() {
+		if (this.actions.size()==0){
+			this.it =0;
+			this.nextAction = null;
 		}
-	}
-	
-	public void addAction(Action a) {
-		super.addAction(a);
-		if (it == null)
-			this.it=actions.iterator();
-	}
-	
+		else{
+			this.it = (it + 1) % this.actions.size();
+			this.nextAction = this.actions.get(it);
+		}
+	}	
 
 	/**
 	 * Gets the current action.
 	 *
 	 * @return the current action
 	 */
-	public Action getCurrentAction() {
+	public Action getNextAction() {
 		return nextAction;
 	}
+
+	@Override
+	public void addAction(Action action) {
+		super.addAction(action);
+		if (this.actions.isEmpty()){
+			this.nextAction= action;
+		}
+	}
+	
 
 }
