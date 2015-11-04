@@ -10,5 +10,4 @@ public class BasketPool extends ResourcePool<Basket> {
     public BasketPool(int nbResource) {
         super(nbResource);
     }
-
 }

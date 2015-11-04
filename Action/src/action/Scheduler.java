@@ -14,9 +14,7 @@ public abstract class Scheduler extends Action{
 	protected boolean isReady =true;
 
 	
-	public Scheduler() {
-		
-	}
+	public Scheduler() {}
 	
 	public Scheduler(Action action) {
 		this.addAction(action);
@@ -42,14 +40,10 @@ public abstract class Scheduler extends Action{
 		return this.isReady && tmp && !this.actions.isEmpty();
 	}
 	
-	
-	
 	@Override
 	public boolean isInProgress() {
 		return !this.actions.isEmpty() && super.isInProgress();
 	}
-
-
 
 	/**
 	 * remove action in scheduler
@@ -61,7 +55,6 @@ public abstract class Scheduler extends Action{
 		this.actions.remove(action);
 	}
 	
-	
 	/**
 	 * Indicates if there is still an action in the scheduler
 	 * 
@@ -71,7 +64,6 @@ public abstract class Scheduler extends Action{
 	public boolean isFinished() {
 		return !isReady()&& this.actions.isEmpty();	
 	}
-	
 	
 	/**
 	 * Adds the action.
@@ -87,7 +79,6 @@ public abstract class Scheduler extends Action{
 		else throw new IllegalArgumentException("Can't add an unready or finished action");		
 	}
 	
-	
 	/**
 	 * returns the list of action scheduler
 	 * 
@@ -96,7 +87,6 @@ public abstract class Scheduler extends Action{
 	public List<Action> getListAction() {
 		return this.actions;
 	}
-	
 	
 	/**
 	 * Make a sentence where is displayed each action of the Scheduler.

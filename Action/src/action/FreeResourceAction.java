@@ -27,16 +27,12 @@ public class FreeResourceAction<R extends Resource> extends ResourcePoolAction<R
 	 */
 	@Override
 	protected void reallyDoStep() {
-		
 		R res = user.getResource();
-		
 		if(res != null) {
 			this.pool.freeResource(res);
 			this.user.resetResource();
 			this.isReady=false;
 			this.isFinished=true;
 		}
-	
 	}
-
 }

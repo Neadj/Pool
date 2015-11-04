@@ -33,5 +33,4 @@ public class ForseeableAction extends Action {
     protected void reallyDoStep() {
         this.remainingTime--;
     }
-
 }
