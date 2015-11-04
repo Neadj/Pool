@@ -1,7 +1,26 @@
 package action;
 
+import java.util.List;
+
 public class SequentialScheduler extends Scheduler{
 
+	
+	public SequentialScheduler() {
+		super();
+	}
+
+	
+	public SequentialScheduler(Action action) {
+		super(action);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	public SequentialScheduler(List<Action> actions) {
+		super(actions);
+	}
+
+	
 	public void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException {
 		this.isReady = false;
 		if (this.actions.isEmpty()){

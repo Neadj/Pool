@@ -1,21 +1,19 @@
 package action;
 
 import static org.junit.Assert.*;
-import java.util.*;
 
 import org.junit.Test;
 
+public class SequentialSchedulerTest extends SchedulerTest {
 
-public class FairSchedulerTest extends SchedulerTest {
-		
 	@Override
 	public Scheduler createScheduler(Action action) {
-		return new FairScheduler(action);
+		return new SequentialScheduler(action);
 	}
 
 	@Override
 	public Scheduler createScheduler() {
-		return new FairScheduler();
+		return new SequentialScheduler();
 	}
 	
 	@Test(expected=ActionNotInitializedException.class)
@@ -24,6 +22,7 @@ public class FairSchedulerTest extends SchedulerTest {
 		f.reallyDoStep();
 	}
 	
+
 	@Test
 	public void reallyDoStepTest() throws ActionFinishedException, ActionNotInitializedException{
 		action1 = new OneStepAction();
@@ -47,9 +46,8 @@ public class FairSchedulerTest extends SchedulerTest {
 		scheduler2.reallyDoStep();
 		
 		assertEquals(1, scheduler2.actions.size());
-		assertEquals(1, scheduler.actions.size());
-		assertSame(scheduler, scheduler2.actions.get(0));
-		assertSame(action2, scheduler.actions.get(0));
+		assertEquals(0, scheduler.actions.size());
+		assertSame(action3, scheduler2.actions.get(0));
 		
 		scheduler2.reallyDoStep();
 		

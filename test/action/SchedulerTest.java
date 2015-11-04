@@ -14,8 +14,6 @@ public abstract class SchedulerTest extends ActionTest {
 	@Before
 	public void setUp() throws Exception {
 		action1 = new OneStepAction();
-		action2 = new OneStepAction();
-		action3 = new OneStepAction();
 	}
 	
 	abstract public Scheduler createScheduler(Action action);
@@ -62,7 +60,7 @@ public abstract class SchedulerTest extends ActionTest {
 	
 	@Override
 	public Action createAction() {
-		Scheduler scheduler = createScheduler(new OneStepAction());
+		Scheduler scheduler = createScheduler(action1);
 		scheduler.addAction(new OneStepAction());
 		Scheduler scheduler2 = createScheduler(scheduler);
 		scheduler2.addAction(new OneStepAction());
