@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;action.SchedulerTest.java&apos; to &apos;SequentialSchedulerTest.java&apos;&#x0D;&#x0A;- Original project: &apos;Action&apos;&#x0D;&#x0A;- Original element: &apos;action.SchedulerTest.java&apos;&#x0D;&#x0A;- Renamed element: &apos;action.SequentialSchedulerTest.java&apos;" description="Rename compilation unit &apos;SchedulerTest.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/test&lt;action{SchedulerTest.java" name="SequentialSchedulerTest.java" references="false" stamp="1446640036025" version="1.0"/>
+</session>
