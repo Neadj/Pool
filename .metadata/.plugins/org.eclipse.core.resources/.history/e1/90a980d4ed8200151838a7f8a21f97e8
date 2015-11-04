@@ -1,0 +1,19 @@
+package action;
+
+public class FreeResourceActionTest extends ActionTest {
+	protected FreeResourceAction freeResAction;
+	
+	@Beforce
+	
+	@Override
+	public Action createAction() {
+		return new 
+	}
+
+	@Override
+	public Action createFinishedAction() throws ActionFinishedException, ActionNotInitializedException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
