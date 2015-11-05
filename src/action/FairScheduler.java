@@ -2,6 +2,13 @@ package action;
 
 import java.util.List;
 
+/**
+ * FairScheduler is an action who is a list of action, 
+ * the order of action's execution is begin action 1, begin action 2, ...,begin action n, continue action 1, continue action 2, ..., continue action n ....
+ * 
+ */
+
+
 public class FairScheduler extends Scheduler {
 
     public FairScheduler() {
@@ -27,7 +34,8 @@ public class FairScheduler extends Scheduler {
      * The current action.
      */
     protected Action nextAction;
-
+    
+    
     @Override
     public void reallyDoStep() throws ActionFinishedException, ActionNotInitializedException {
         this.isReady = false;
@@ -56,7 +64,7 @@ public class FairScheduler extends Scheduler {
         }
     }
 
-    /**
+	/**
      * Gets the current action.
      *
      * @return the current action

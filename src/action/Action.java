@@ -3,7 +3,6 @@ package action;
 
 /**
  * The Class Action.
- *
  * 
  */
 public abstract class Action 
@@ -52,7 +51,7 @@ public abstract class Action
 
 
 	/**
-	 * Really do the step.
+	 * do the next action
 	 * @throws ActionFinishedException 
 	 * @throws ActionNotInitializedException 
 	 */

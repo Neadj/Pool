@@ -3,6 +3,10 @@ package action;
 import resources.BasketPool;
 import resources.CubiclePool;
 
+/**
+ * the simulation all at the pool
+ */
+
 public class Pool {
 
     public static void main(String[] args) throws ActionFinishedException, ActionNotInitializedException {

@@ -1,5 +1,9 @@
 package action;
 
+/**
+ * it's a simple action, the action take a constant number of step 
+ */
+
 public class ForseeableAction extends Action {
 
     protected int totalTime;

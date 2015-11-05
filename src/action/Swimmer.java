@@ -6,6 +6,10 @@ import resources.Cubicle;
 import resources.CubiclePool;
 import resources.ResourcefulUser;
 
+/**
+ * Swimmer simulates the action that a swimmer do before go in the pool
+ */
+
 public class Swimmer extends SequentialScheduler{
     
     protected String name;

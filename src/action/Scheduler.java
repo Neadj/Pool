@@ -4,7 +4,7 @@ import java.util.*;
 
 
 /**
- * The Class Scheduler.
+ * Scheduler is an action who is a list of action
  */
 public abstract class Scheduler extends Action{
 	
