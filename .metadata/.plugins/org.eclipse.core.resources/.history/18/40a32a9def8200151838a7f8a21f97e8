@@ -32,6 +32,7 @@ public class ForseeableAction extends Action {
     @Override
     protected void reallyDoStep() {
         this.remainingTime--;
+        System.out.println("(" + (totalTime-remainingTime) + "/" + totalTime + ")");
     }
 
 }
