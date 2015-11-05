@@ -1,0 +1,36 @@
+package action;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class SequentialSchedulerTest extends ActionTest{
+	protected SequentialScheduler seqScheduler;
+
+	@Before
+	public void init(){
+		seqScheduler = new SequentialScheduler();
+	}
+	
+	@Override
+	public Action createAction() {
+		return seqScheduler;
+	}
+
+	@Override
+	public Action createFinishedAction() throws ActionFinishedException, ActionNotInitializedException {
+		for (int i = 0; i < 10; i++) {
+			seqScheduler.doStep();
+		}
+		return seqScheduler;
+	}
+	
+	@Test
+	public void reallyDoStepTest() throws ActionFinishedException, ActionNotInitializedException{
+		List<Swimmer> actions = new ArrayList<Swimmer>();
+		for(int i = 0; i < 3; i++)
+			actions.add(new Swimmer(Integer.toString(i), new BasketPool(), null, i, i, i));
+	}
+}
