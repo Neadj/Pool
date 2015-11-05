@@ -60,6 +60,8 @@ public class FairScheduler extends Scheduler {
         } else {
         	if(!anActionHasBeenRemove)
         		this.it = (it + 1) % this.actions.size();
+        	else
+        		this.it = (it) % this.actions.size();
             this.nextAction = this.actions.get(it);
         }
     }
