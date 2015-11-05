@@ -21,7 +21,6 @@ public class FairSchedulerTest extends SchedulerTest {
 	@Test(expected=ActionNotInitializedException.class)
 	public void reallydoActionNotInitializedExceptionTest() throws ActionFinishedException, ActionNotInitializedException {
 		FairScheduler f = new FairScheduler();
-		System.out.println(f.actions.size());
 		f.reallyDoStep();
 	}
 	
@@ -41,7 +40,7 @@ public class FairSchedulerTest extends SchedulerTest {
 		assertSame(scheduler, scheduler2.actions.get(0));
 		assertSame(action2, scheduler.actions.get(0));
 		assertSame(action3, scheduler2.actions.get(1));
-		/*
+		
 		scheduler2.reallyDoStep();
 		
 		assertEquals(1, scheduler2.actions.size());
@@ -53,7 +52,6 @@ public class FairSchedulerTest extends SchedulerTest {
 		
 		assertEquals(0, scheduler2.actions.size());
 		assertEquals(0, scheduler.actions.size());
-		*/
 		
 	}
 
