@@ -43,7 +43,7 @@ public abstract class ResourcePool<T extends Resource> {
 	/**
 	 * Return a object that provided before.
 	 * @param resource : The object that will be return.
-	 * @throws IllegalArgumentException : If the object that user returns isn't the object provided before, this exception will be raised.
+	 * @throws IllegalArgumentException : If 
 	 */
 	public void freeResource(T resource) throws IllegalArgumentException {
 		if (!givenResources.contains(resource))
