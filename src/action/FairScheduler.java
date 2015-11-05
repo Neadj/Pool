@@ -37,19 +37,21 @@ public class FairScheduler extends Scheduler {
         nextAction.doStep();
         if (this.nextAction.isFinished()) {
             this.actions.remove(nextAction);
+            advancesNextAction(true);
         }
-        advancesNextAction();
+        else advancesNextAction(false);
     }
 
     /**
      * move cursor on the next action
      */
-    protected void advancesNextAction() {
+    protected void advancesNextAction(Boolean anActionHasBeenRemove) {
         if (this.actions.size() == 0) {
             this.it = 0;
             this.nextAction = null;
         } else {
-            this.it = (it + 1) % this.actions.size();
+        	if(!anActionHasBeenRemove)
+        		this.it = (it + 1) % this.actions.size();
             this.nextAction = this.actions.get(it);
         }
     }

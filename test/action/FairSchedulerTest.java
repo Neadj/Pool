@@ -26,9 +26,6 @@ public class FairSchedulerTest extends SchedulerTest {
 	
 	@Test
 	public void reallyDoStepTest() throws ActionFinishedException, ActionNotInitializedException{
-		action1 = new OneStepAction();
-		action2 = new OneStepAction();
-		action3 = new OneStepAction();
 		Scheduler scheduler = createScheduler(action1);
 		scheduler.addAction(action2);
 		Scheduler scheduler2 = createScheduler(scheduler);
