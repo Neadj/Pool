@@ -8,6 +8,14 @@ public abstract class ResourcePool<T extends Resource> {
 	protected List<T> availableResources = new ArrayList<T>();
 	protected List<T> givenResources = new ArrayList<T>();
 
+	public boolean ressourceIsUnavailable(T resource) {
+		return givenResources.contains(resource);
+	}
+
+	public boolean ressourceIsAvailable(T resource) {
+		return availableResources.contains(resource);
+	}
+
 	public abstract T createResource();
 
 	public ResourcePool(int nbResource) {
