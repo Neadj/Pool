@@ -3,8 +3,7 @@ package action;
 import java.util.List;
 
 /**
- * SequentialScheduler is an action who is a list of action, 
- * the order of action's execution is sequential begin action1, continue action 1 up to the action is done,
+ * the order of actions execution is sequential begin action1, continue action 1 up to the action is done,
  * begin action2, continue action 2 up to the action is done, ... , begin actionn, continue action n up to the action is done,
  * 
  */

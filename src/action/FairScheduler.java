@@ -3,9 +3,9 @@ package action;
 import java.util.List;
 
 /**
- * FairScheduler is an action who is a list of action, 
- * the order of action's execution is begin action 1, begin action 2, ...,begin action n, continue action 1, continue action 2, ..., continue action n ....
- * 
+ * FairScheduler is a Scheduler, i.e. a list of actions that is an action itself
+ * This one works as followed : 
+ * begin action 1, begin action 2, ...,begin action n, continue action 1, continue action 2, ..., continue action n ....
  */
 
 
@@ -53,12 +53,12 @@ public class FairScheduler extends Scheduler {
     /**
      * move cursor on the next action
      */
-    protected void advancesNextAction(Boolean anActionHasBeenRemove) {
+    protected void advancesNextAction(Boolean anActionHasBeenRemoved) {
         if (this.actions.size() == 0) {
             this.it = 0;
             this.nextAction = null;
         } else {
-        	if(!anActionHasBeenRemove)
+        	if(!anActionHasBeenRemoved)
         		this.it = (it + 1) % this.actions.size();
             this.nextAction = this.actions.get(it);
         }

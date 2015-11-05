@@ -4,6 +4,7 @@ import resources.*;
 
 /**
  * The Class FreeResourceAction.
+ * It makes a ResourcefulUser free its currently held resource into the ResourcePool that was associated.
  * 
 * @param <R> the generic resource type
  */
@@ -21,7 +22,7 @@ public class FreeResourceAction<R extends Resource> extends ResourcePoolAction<R
     }
 
     /**
-     * Really do a step. Thats mean free a resource and displayed a sentence
+     * Really do a step. Thats mean free a resource and display a sentence
      * which reported it. Then, the resource is finished.
      */
     @Override

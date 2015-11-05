@@ -3,7 +3,7 @@ import resources.*;
 
 /*
  * The Class ResourcePoolAction.
- * it is an action who use resource at the pool
+ * it is an action which uses resource at the pool
  * @param <R> the generic type
  */
 public abstract class ResourcePoolAction <R extends Resource>extends Action{

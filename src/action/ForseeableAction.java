@@ -1,7 +1,7 @@
 package action;
 
 /**
- * it's a simple action, the action take a constant number of step 
+ * It's a simple action, which takes a set number of steps.
  */
 
 public class ForseeableAction extends Action {

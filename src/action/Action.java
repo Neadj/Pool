@@ -2,7 +2,7 @@ package action;
 
 
 /**
- * The Class Action.
+ * The Action abstract class.
  * 
  */
 public abstract class Action 
@@ -33,7 +33,7 @@ public abstract class Action
 	public abstract boolean isFinished();
 	
 	/**
-	 * Checks if the action is finished, then do a step.
+	 * Checks if the action is finished, then does a step.
 	 *
 	 * @throws ActionFinishedException if the action is already finished
 	 * @throws ActionNotInitializedException 
@@ -51,7 +51,7 @@ public abstract class Action
 
 
 	/**
-	 * do the next action
+	 * Does the next action
 	 * @throws ActionFinishedException 
 	 * @throws ActionNotInitializedException 
 	 */
