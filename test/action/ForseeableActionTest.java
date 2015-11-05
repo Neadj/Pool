@@ -13,6 +13,7 @@ public class ForseeableActionTest extends ActionTest {
 		return atest;
 	}
 	
+	
 	@Before
 	public void initialized(){
 		atest = new ForseeableAction(10);
