@@ -3,7 +3,7 @@ package resources;
 public class CubiclePool extends ResourcePool<Cubicle> {
 
 	/**
-	 * Implementation of abstract class ResourcePool.
+	 * 
 	 */
 	@Override
 	public Cubicle createResource() {
