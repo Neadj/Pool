@@ -19,10 +19,10 @@ public class FreeResourceActionTest extends ResourcePoolActionTest {
 		try {
 			takeResourceAction.doStep();
 		} catch (ActionFinishedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (ActionNotInitializedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return new FreeResourceAction<>(pool, user);

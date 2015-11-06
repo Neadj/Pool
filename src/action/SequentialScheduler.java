@@ -18,7 +18,7 @@ public class SequentialScheduler extends Scheduler{
 	
 	public SequentialScheduler(Action action) {
 		super(action);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	
